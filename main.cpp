@@ -2,15 +2,17 @@
 #include <string>
 #include <sstream>
 #include "src/Order.h"
+#include "src/OrderBook.h"
 
 using namespace std;
 
 void printHelpText() {
     std::cout << "Order Book Usage:" << std::endl;
-    std::cout << "[help] prints help text" << std::endl;
-    std::cout << "[buy]  place buy order" << std::endl;
-    std::cout << "[sell] place sell order" << std::endl;
-    std::cout << "[exit] terminates the program" << std::endl;
+    std::cout << "[help]  prints help text" << std::endl;
+    std::cout << "[buy]   place buy order" << std::endl;
+    std::cout << "[sell]  place sell order" << std::endl;
+    std::cout << "[print] print order book" << std::endl;
+    std::cout << "[exit]  terminates the program" << std::endl;
 }
 
 struct OrderDetails {
@@ -33,7 +35,8 @@ OrderDetails getOrderDetails(const string& side) {
 int main() {
     printHelpText();
 
-    std::string command;
+    string command;
+    OrderBook orderBook;
 
     while (command != "exit") {
         std::cout << std::endl << "Please enter a command: ";
@@ -44,9 +47,13 @@ int main() {
         } else if (command == "buy") {
             OrderDetails od = getOrderDetails(command);
             Order order = Order(od.trader, od.stock, od.units, true);
+            orderBook.buyBook[od.stock].push_back(order);
         } else if (command == "sell") {
             OrderDetails od = getOrderDetails(command);
             Order order = Order(od.trader, od.stock, od.units, false);
+            orderBook.sellBook[od.stock].push_back(order);
+        } else if (command == "print") {
+            cout << orderBook << endl;
         }
     }
 

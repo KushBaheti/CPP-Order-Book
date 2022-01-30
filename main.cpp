@@ -3,8 +3,7 @@
 #include <sstream>
 #include "src/Order.h"
 #include "src/OrderBook.h"
-
-using namespace std;
+#include "src/MatchingEngine.h"
 
 void printHelpText() {
     std::cout << "Order Book Usage:" << std::endl;
@@ -16,17 +15,17 @@ void printHelpText() {
 }
 
 struct OrderDetails {
-    string trader;
-    string stock;
+    std::string trader;
+    std::string stock;
     double units;
 };
 
-OrderDetails getOrderDetails(const string& side) {
-    string buySellString;
-    cout << "Please place the " << side << " order [<Trader> <Stock> <Units>]:" << endl;
-    ws(cin);
-    getline(cin, buySellString);
-    istringstream iss(buySellString);
+OrderDetails getOrderDetails(const std::string& side) {
+    std::string buySellString;
+    std::cout << "Please place the " << side << " order [<Trader> <Stock> <Units>]:" << endl;
+    ws(std::cin);
+    getline(std::cin, buySellString);
+    std::istringstream iss(buySellString);
     OrderDetails od;
     iss >> od.trader >> od.stock >> od.units;
     return od;
@@ -35,8 +34,8 @@ OrderDetails getOrderDetails(const string& side) {
 int main() {
     printHelpText();
 
-    string command;
-    OrderBook orderBook;
+    std::string command;
+    MatchingEngine engine;
 
     while (command != "exit") {
         std::cout << std::endl << "Please enter a command: ";
@@ -47,13 +46,13 @@ int main() {
         } else if (command == "buy") {
             OrderDetails od = getOrderDetails(command);
             Order order = Order(od.trader, od.stock, od.units, true);
-            orderBook.buyBook[od.stock].push_back(order);
+            engine.run(order);
         } else if (command == "sell") {
             OrderDetails od = getOrderDetails(command);
             Order order = Order(od.trader, od.stock, od.units, false);
-            orderBook.sellBook[od.stock].push_back(order);
+            engine.run(order);
         } else if (command == "print") {
-            cout << orderBook << endl;
+            std::cout << engine.orderBook << std::endl;
         }
     }
 

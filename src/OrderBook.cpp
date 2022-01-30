@@ -1,24 +1,18 @@
 #include "OrderBook.h"
 
-using namespace std;
-
-OrderBook::OrderBook() {
-
-}
-
-void OrderBook::printOrderBook(const string &side, const map<string, vector<Order>> &book) {
-    cout << side << " Book:" << endl;
+void OrderBook::printOrderBook(const std::string &side, const std::map<std::string, std::vector<Order>> &book) {
+    std::cout << side << " Book:" << std::endl;
     for (auto const &pair: book) {
-        cout << "Stock: " << pair.first << endl;
-        cout << "Orders: " << endl;
+        std::cout << "Stock: " << pair.first << std::endl;
+        std::cout << "Orders: " << std::endl;
         for (const Order& order: pair.second) {
-            cout << order << endl;
+            std::cout << order << std::endl;
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 }
 
-ostream &operator<<(ostream &os, const OrderBook& orderBook) {
+std::ostream &operator<<(std::ostream &os, const OrderBook& orderBook) {
     OrderBook::printOrderBook("Buy", orderBook.buyBook);
     OrderBook::printOrderBook("Sell", orderBook.sellBook);
     return os;

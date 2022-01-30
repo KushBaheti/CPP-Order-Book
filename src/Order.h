@@ -4,17 +4,16 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
 class Order {
 public:
-    string trader;
-    string stock;
+    std::string trader;
+    std::string stock;
     double units;
     bool isBuy;
-public:
-    Order(string, string, double, bool);
+
+    Order(std::string, std::string, double, bool);
     friend std::ostream& operator<<(std::ostream& os, const Order& order);
+    friend bool operator==(const Order& lhs, const Order& rhs);
 };
 
 #endif //ORDER_BOOK_ORDER_H

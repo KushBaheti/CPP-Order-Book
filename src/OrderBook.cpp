@@ -1,6 +1,6 @@
 #include "OrderBook.h"
 
-void OrderBook::printOrderBook(const std::string &side, const std::map<std::string, std::vector<Order>> &book) {
+void OrderBook::printOrderBook(const std::string &side, const std::map<std::string, std::vector<Order> > &book) {
     std::cout << side << " Book:" << std::endl;
     for (auto const &pair: book) {
         std::cout << "Stock: " << pair.first << std::endl;

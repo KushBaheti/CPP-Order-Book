@@ -8,10 +8,10 @@
 
 class OrderBook {
 public:
-    std::map<std::string, std::vector<Order>> buyBook;
-    std::map<std::string, std::vector<Order>> sellBook;
+    std::map<std::string, std::vector<Order> > buyBook;
+    std::map<std::string, std::vector<Order> > sellBook;
 
-    static void printOrderBook(const std::string& side, const std::map<std::string, std::vector<Order>>& book);
+    static void printOrderBook(const std::string& side, const std::map<std::string, std::vector<Order> >& book);
     friend std::ostream& operator<<(std::ostream& os, const OrderBook& orderBook);
 };
 

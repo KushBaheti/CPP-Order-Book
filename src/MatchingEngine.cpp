@@ -16,8 +16,8 @@ void orderExecutedMessage(const std::string& trader, const std::string& opposite
 void MatchingEngine::run(const Order& order) {
     auto [ trader, stock, units, isBuy ] = order;
 
-    std::map<std::string, std::vector<Order>> &book = isBuy ? orderBook.buyBook : orderBook.sellBook;
-    std::map<std::string, std::vector<Order>> &oppositeBook = isBuy ? orderBook.sellBook : orderBook.buyBook;
+    std::map<std::string, std::vector<Order> > &book = isBuy ? orderBook.buyBook : orderBook.sellBook;
+    std::map<std::string, std::vector<Order> > &oppositeBook = isBuy ? orderBook.sellBook : orderBook.buyBook;
 
     if (oppositeBook[stock].empty()) {
         book[stock].push_back(order);

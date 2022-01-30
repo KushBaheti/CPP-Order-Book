@@ -7,10 +7,10 @@ void orderExecutedMessage(const std::string& trader, const std::string& opposite
 
     std::cout << "Order Executed - ";
     std::cout << "Buy: " << buyTrader
-         << " Stock: " << stock
-         << " Units: " << units
-         << " Sell: " << sellTrader
-         << std::endl;
+              << " Stock: " << stock
+              << " Units: " << units
+              << " Sell: " << sellTrader
+              << std::endl;
 }
 
 void MatchingEngine::run(const Order& order) {

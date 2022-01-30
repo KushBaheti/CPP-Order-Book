@@ -2,34 +2,12 @@
 #include <string>
 #include <sstream>
 #include "src/Order.h"
+#include "src/OrderDetails.h"
 #include "src/OrderBook.h"
 #include "src/MatchingEngine.h"
 
-void printHelpText() {
-    std::cout << "Order Book Usage:" << std::endl;
-    std::cout << "[help]  prints help text" << std::endl;
-    std::cout << "[buy]   place buy order" << std::endl;
-    std::cout << "[sell]  place sell order" << std::endl;
-    std::cout << "[print] print order book" << std::endl;
-    std::cout << "[exit]  terminates the program" << std::endl;
-}
-
-struct OrderDetails {
-    std::string trader;
-    std::string stock;
-    double units;
-};
-
-OrderDetails getOrderDetails(const std::string& side) {
-    std::string buySellString;
-    std::cout << "Please place the " << side << " order [<Trader> <Stock> <Units>]:" << endl;
-    ws(std::cin);
-    getline(std::cin, buySellString);
-    std::istringstream iss(buySellString);
-    OrderDetails od;
-    iss >> od.trader >> od.stock >> od.units;
-    return od;
-}
+void printHelpText();
+OrderDetails getOrderDetails(const std::string& side);
 
 int main() {
     printHelpText();
@@ -58,4 +36,25 @@ int main() {
 
     std::cout << "Program terminating." << std::endl;
     return 0;
+}
+
+void printHelpText() {
+    std::cout << "Order Book Usage:" << std::endl;
+    std::cout << "[help]  prints help text" << std::endl;
+    std::cout << "[buy]   place buy order" << std::endl;
+    std::cout << "[sell]  place sell order" << std::endl;
+    std::cout << "[print] print order book" << std::endl;
+    std::cout << "[exit]  terminates the program" << std::endl;
+}
+
+OrderDetails getOrderDetails(const std::string& side) {
+    std::string buySellString;
+    std::cout << "Please place the " << side << " order [<Trader> <Stock> <Units>]:" << std::endl;
+    ws(std::cin);
+    getline(std::cin, buySellString);
+    std::istringstream iss(buySellString);
+    OrderDetails od;
+    iss >> od.trader >> od.stock >> od.units;
+    for (auto &c: od.stock) c = toupper(c);
+    return od;
 }

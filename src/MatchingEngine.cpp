@@ -5,11 +5,11 @@ void orderExecutedMessage(const std::string& trader, const std::string& opposite
     std::string buyTrader = isBuy ? trader : oppositeTrader;
     std::string sellTrader = isBuy ? oppositeTrader : trader;
 
-    std::cout << "Order Executed - ";
+    std::cout << "[Order Executed] ";
     std::cout << "Buy: " << buyTrader
-              << " Stock: " << stock
+              << " | Stock: " << stock
               << " Units: " << units
-              << " Sell: " << sellTrader
+              << " | Sell: " << sellTrader
               << std::endl;
 }
 

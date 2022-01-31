@@ -55,6 +55,7 @@ OrderDetails getOrderDetails(const std::string& side) {
     std::istringstream iss(buySellString);
     OrderDetails od;
     iss >> od.trader >> od.stock >> od.units;
+    for (char &c: od.trader) c = toupper(c);
     for (char &c: od.stock) c = toupper(c);
     return od;
 }

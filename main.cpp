@@ -29,7 +29,7 @@ int main() {
             OrderDetails od = getOrderDetails(command);
             Order order = Order(od.trader, od.stock, od.units, false);
             engine.run(order);
-        } else if (command == "print") {
+        } else if (command == "book") {
             std::cout << engine.orderBook << std::endl;
         }
     }

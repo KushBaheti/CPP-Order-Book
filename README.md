@@ -3,6 +3,17 @@
 ## Project Description
 This project is a minimalistic working application of an open order book and matching engine using C++ and its standard libraries.
 
+## Table of Contents
+* [Project Description](#project-description)
+* [Table of Contents](#table-of-contents)
+* [Technology](#technology)
+* [Installation](#installation)
+* [Features](#features)
+* [Examples of use](#examples-of-use)
+* [Implementation](#implementation)
+* [Tests](#tests)
+* [TODO](#todo)
+
 ## Technology
 C++ 17\
 Google Test v1.11.0
@@ -46,7 +57,7 @@ This sell order will match with the already existing buy order for 10 units of G
 ```
 And printing the order book would show an empty buy book, as the buy order was completely filled, and one open order on the sell book, as the sell order was only partially filled.
 ```bash
-Please enter a command: print
+Please enter a command: book
 Buy Book:
 Stock: GOOG
 Orders: 

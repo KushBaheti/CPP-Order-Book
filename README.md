@@ -74,7 +74,7 @@ The `Order` class serves as the most fundamental unit.
 The `OrderBook` class consists of two `std::maps`, which represent the buy book and the sell book. The key of the map is the stock ticker/name, and the value is a vector of `Order`'s.
 Thus, the data structure of the buy and sell book looks like: `std::map<std::string, std::vector<Order>>`.
 
-The `MatchingEngine` class instatiates an `OrderBook` object. It runs everytime a new `Order` has been placed. It is responsible for checking whether an open order of the opposite position exists, executing the trade, and printing the notification.
+The `MatchingEngine` class instantiates an `OrderBook` object. It runs everytime a new `Order` has been placed. It is responsible for checking whether an open order of the opposite position exists, executing the trade, and printing the notification.
 
 ## Tests
 The `MatchingEngine` was implemented by following TDD, and includes tests written using the Google Test library.

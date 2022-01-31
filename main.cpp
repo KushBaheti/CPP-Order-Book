@@ -43,7 +43,7 @@ void printHelpText() {
     std::cout << "[help]  prints help text" << std::endl;
     std::cout << "[buy]   place buy order" << std::endl;
     std::cout << "[sell]  place sell order" << std::endl;
-    std::cout << "[print] print order book" << std::endl;
+    std::cout << "[book]  print order book" << std::endl;
     std::cout << "[exit]  terminates the program" << std::endl;
 }
 
